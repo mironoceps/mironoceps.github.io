@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9l免费官网 - 开放视频社区,创作与分享的自由空间</title>
+<meta name="description" content="9l免费官网是一个面向创作者的开放视频社区，提供免费的视频创作、分享与交流空间，汇聚影视、纪录、生活、知识等多元内容，让每一次表达都有回声。">
+<style>
+  :root{
+    --bg:#0b0e14;
+    --bg-soft:#11151f;
+    --panel:#151b27;
+    --panel-2:#1a2130;
+    --line:#242d3d;
+    --line-soft:#1e2635;
+    --txt:#e8edf5;
+    --txt-dim:#9aa7bd;
+    --txt-faint:#6b7891;
+    --accent:#3ee6c3;
+    --accent-2:#5b8cff;
+    --accent-warm:#ffb347;
+    --danger:#ff5f6d;
+    --radius:16px;
+    --maxw:1200px;
+    --shadow:0 18px 50px -20px rgba(0,0,0,.8);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1100px 600px at 85% -10%, rgba(91,140,255,.14), transparent 60%),
+      radial-gradient(900px 500px at 5% 0%, rgba(62,230,195,.10), transparent 55%),
+      var(--bg);
+    color:var(--txt);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  ul{list-style:none}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ============ 顶栏 ============ */
+  header.site{
+    position:sticky;top:0;z-index:80;
+    backdrop-filter:blur(16px);
+    background:rgba(11,14,20,.72);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav{display:flex;align-items:center;gap:34px;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:.5px;flex-shrink:0}
+  .logo-mark{
+    width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;color:#06110f;font-size:17px;font-weight:900;
+    box-shadow:0 6px 18px -6px rgba(62,230,195,.7);
+  }
+  .logo span.brand-9l{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .logo small{font-size:11px;color:var(--txt-faint);font-weight:500;letter-spacing:2px;margin-left:2px}
+  nav.main{display:flex;gap:26px;font-size:14.5px;color:var(--txt-dim)}
+  nav.main a{position:relative;padding:6px 0;transition:color .2s}
+  nav.main a:hover{color:var(--txt)}
+  nav.main a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--accent);transition:width .25s;border-radius:2px}
+  nav.main a:hover::after{width:100%}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+  .search-box{
+    display:flex;align-items:center;gap:8px;
+    background:var(--panel);border:1px solid var(--line);border-radius:999px;
+    padding:8px 14px;color:var(--txt-faint);font-size:13.5px;min-width:190px;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  .search-box:focus-within{border-color:rgba(62,230,195,.5);box-shadow:0 0 0 3px rgba(62,230,195,.1)}
+  .search-box input{background:none;border:none;outline:none;color:var(--txt);font-size:13.5px;width:100%}
+  .search-box input::placeholder{color:var(--txt-faint)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:600;border-radius:999px;padding:10px 20px;transition:transform .18s,box-shadow .18s,background .18s,border-color .18s;white-space:nowrap}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:linear-gradient(120deg,var(--accent),#39c9e8);color:#04140f;box-shadow:0 10px 26px -12px rgba(62,230,195,.85)}
+  .btn-primary:hover{box-shadow:0 14px 32px -12px rgba(62,230,195,1)}
+  .btn-ghost{border:1px solid var(--line);color:var(--txt-dim)}
+  .btn-ghost:hover{border-color:rgba(62,230,195,.45);color:var(--txt);background:rgba(62,230,195,.05)}
+  .btn-blue{background:linear-gradient(120deg,var(--accent-2),#7b6bff);color:#fff;box-shadow:0 10px 26px -12px rgba(91,140,255,.9)}
+  .burger{display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);align-items:center;justify-content:center;color:var(--txt-dim)}
+  .burger span,.burger span::before,.burger span::after{display:block;width:16px;height:2px;background:currentColor;border-radius:2px;position:relative}
+  .burger span::before,.burger span::after{content:"";position:absolute;left:0}
+  .burger span::before{top:-5px}
+  .burger span::after{top:5px}
+
+  /* ============ Hero ============ */
+  .hero{position:relative;padding:76px 0 66px;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);
+    pointer-events:none;
+  }
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:center}
+  .badge{
+    display:inline-flex;align-items:center;gap:9px;font-size:12.5px;color:var(--accent);
+    background:rgba(62,230,195,.08);border:1px solid rgba(62,230,195,.28);
+    padding:6px 14px;border-radius:999px;letter-spacing:.5px;margin-bottom:22px;
+  }
+  .badge i{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(62,230,195,.18);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(62,230,195,.18)}50%{box-shadow:0 0 0 7px rgba(62,230,195,.03)}}
+  .hero h1{
+    font-size:clamp(40px,5.4vw,66px);line-height:1.08;font-weight:900;letter-spacing:-1.5px;
+    background:linear-gradient(150deg,#fff 20%,#a8c6ff 60%,var(--accent) 105%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:8px;
+  }
+  .hero h1 .h1-sub{display:block;font-size:.42em;letter-spacing:2px;font-weight:600;color:var(--txt-dim);-webkit-text-fill-color:var(--txt-dim);margin-top:16px}
+  .hero p.lead{font-size:16.5px;color:var(--txt-dim);max-width:520px;margin:22px 0 30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+  .stats{display:flex;gap:42px;flex-wrap:wrap;border-top:1px solid var(--line-soft);padding-top:26px}
+  .stat b{display:block;font-size:26px;font-weight:800;letter-spacing:-.5px}
+  .stat b em{font-style:normal;font-size:15px;color:var(--accent);margin-left:2px}
+  .stat span{font-size:12.5px;color:var(--txt-faint);letter-spacing:.5px}
+
+  /* 播放器卡片 */
+  .player-card{
+    position:relative;border-radius:22px;overflow:hidden;
+    background:linear-gradient(160deg,#1b2433,#0d1119);
+    border:1px solid var(--line);box-shadow:var(--shadow);
+    aspect-ratio:16/11;
+    display:flex;flex-direction:column;
+  }
+  .player-screen{position:relative;flex:1;overflow:hidden;background:
+    radial-gradient(600px 300px at 30% 20%, rgba(91,140,255,.28), transparent 60%),
+    radial-gradient(500px 260px at 80% 90%, rgba(62,230,195,.22), transparent 60%),
+    #0a0d13;}
+  .player-screen svg.scene{position:absolute;inset:0;width:100%;height:100%}
+  .play-fab{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:74px;height:74px;border-radius:50%;
+    background:rgba(62,230,195,.92);color:#04140f;
+    display:grid;place-items:center;
+    box-shadow:0 0 0 10px rgba(62,230,195,.12),0 18px 40px -10px rgba(62,230,195,.8);
+    transition:transform .2s;
+  }
+  .play-fab:hover{transform:translate(-50%,-50%) scale(1.07)}
+  .play-fab svg{width:26px;height:26px;margin-left:3px}
+  .player-tag{position:absolute;top:14px;left:14px;display:flex;gap:8px;align-items:center;font-size:11.5px;color:#fff;background:rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.14);padding:5px 11px;border-radius:999px;backdrop-filter:blur(6px)}
+  .player-tag i{width:6px;height:6px;border-radius:50%;background:var(--danger);animation:pulse2 1.4s infinite}
+  @keyframes pulse2{0%,100%{opacity:1}50%{opacity:.25}}
+  .player-bar{
+    position:absolute;left:0;right:0;bottom:0;padding:14px 16px;
+    background:linear-gradient(to top,rgba(0,0,0,.78),transparent);
+  }
+  .timeline{height:4px;border-radius:4px;background:rgba(255,255,255,.16);overflow:hidden;margin-bottom:10px}
+  .timeline::before{content:"";display:block;height:100%;width:42%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:4px;animation:prog 9s ease-in-out infinite}
+  @keyframes prog{0%{width:12%}50%{width:58%}100%{width:42%}}
+  .player-meta{display:flex;justify-content:space-between;font-size:11.5px;color:rgba(255,255,255,.7)}
+  .player-meta strong{color:#fff;font-weight:600;font-size:12.5px}
+  .card-foot{display:flex;align-items:center;gap:12px;padding:14px 16px;border-top:1px solid var(--line-soft);background:rgba(255,255,255,.015)}
+  .avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent-2),#9b6bff);display:grid;place-items:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+  .card-foot .meta{flex:1;min-width:0}
+  .card-foot .meta b{display:block;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .card-foot .meta span{font-size:11.5px;color:var(--txt-faint)}
+  .icon-btn{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;color:var(--txt-dim);transition:.2s}
+  .icon-btn:hover{border-color:rgba(62,230,195,.5);color:var(--accent);background:rgba(62,230,195,.06)}
+  .icon-btn.on{color:var(--accent);border-color:rgba(62,230,195,.5);background:rgba(62,230,195,.1)}
+  .icon-btn svg{width:16px;height:16px}
+
+  /* ============ 通用节 ============ */
+  section{padding:66px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:34px;flex-wrap:wrap}
+  .sec-head .eyebrow{font-size:12px;letter-spacing:3px;color:var(--accent);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .sec-head .eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px}
+  .sec-head h2{font-size:clamp(26px,3.2vw,36px);font-weight:800;letter-spacing:-.8px;line-height:1.25}
+  .sec-head h2 small{display:block;font-size:14px;font-weight:400;color:var(--txt-faint);letter-spacing:.5px;margin-top:8px}
+  .sec-head .more{font-size:13.5px;color:var(--txt-dim);display:inline-flex;align-items:center;gap:6px;transition:color .2s}
+  .sec-head .more:hover{color:var(--accent)}
+  .sec-head .more svg{width:15px;height:15px}
+
+  /* 分类条 */
+  .cat-strip{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+  .cat-chip{font-size:13px;color:var(--txt-dim);border:1px solid var(--line);border-radius:999px;padding:7px 16px;transition:.2s;background:var(--panel)}
+  .cat-chip:hover,.cat-chip.active{color:#04140f;background:linear-gradient(120deg,var(--accent),#3ec9e8);border-color:transparent;font-weight:600}
+
+  /* 视频网格 */
+  .vid-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .vid-card{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden;transition:transform .22s,border-color .22s,box-shadow .22s;display:flex;flex-direction:column}
+  .vid-card:hover{transform:translateY(-5px);border-color:rgba(62,230,195,.32);box-shadow:0 20px 40px -24px rgba(0,0,0,.9)}
+  .thumb{position:relative;aspect-ratio:16/9;overflow:hidden}
+  .thumb svg{width:100%;height:100%;display:block;transition:transform .4s}
+  .vid-card:hover .thumb svg{transform:scale(1.06)}
+  .thumb .dur{position:absolute;right:9px;bottom:9px;font-size:11px;background:rgba(0,0,0,.7);color:#fff;padding:2px 7px;border-radius:5px;letter-spacing:.5px}
+  .thumb .tagx{position:absolute;left:9px;top:9px;font-size:10.5px;background:rgba(62,230,195,.16);border:1px solid rgba(62,230,195,.4);color:var(--accent);padding:2px 8px;border-radius:5px;backdrop-filter:blur(4px)}
+  .vid-info{padding:14px 14px 15px;flex:1;display:flex;flex-direction:column;gap:8px}
+  .vid-info h3{font-size:14.5px;font-weight:650;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .vid-info .vmeta{font-size:11.5px;color:var(--txt-faint);display:flex;align-items:center;gap:8px;margin-top:auto}
+  .vid-info .vmeta i{width:3px;height:3px;border-radius:50%;background:var(--txt-faint)}
+  .vid-info .vmeta .au{color:var(--txt-dim)}
+
+  /* 分类精选 */
+  .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .cat-card{position:relative;border-radius:var(--radius);overflow:hidden;min-height:190px;border:1px solid var(--line-soft);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;transition:transform .22s,border-color .22s}
+  .cat-card:hover{transform:translateY(-4px);border-color:rgba(91,140,255,.4)}
+  .cat-card .c-bg{position:absolute;inset:0;z-index:0}
+  .cat-card .c-bg svg{width:100%;height:100%}
+  .cat-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,11,17,.94) 10%,rgba(8,11,17,.35) 70%,transparent);z-index:1}
+  .cat-card > *{position:relative;z-index:2}
+  .cat-card .c-k{font-size:11px;letter-spacing:2.5px;color:var(--accent);font-weight:700;margin-bottom:8px}
+  .cat-card h3{font-size:19px;font-weight:750;margin-bottom:6px}
+  .cat-card p{font-size:12.5px;color:var(--txt-dim);line-height:1.6}
+  .cat-card .c-n{margin-top:12px;font-size:12px;color:var(--txt-faint)}
+
+  /* 创作者 */
+  .maker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .maker{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:24px 20px;text-align:center;transition:.22s}
+  .maker:hover{transform:translateY(-4px);border-color:rgba(62,230,195,.3)}
+  .maker .m-av{width:66px;height:66px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-weight:800;font-size:22px;color:#fff;position:relative}
+  .maker .m-av::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1.5px solid rgba(62,230,195,.35);border-top-color:transparent;animation:spin 6s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .maker h3{font-size:15px;font-weight:650;margin-bottom:4px}
+  .maker .role{font-size:12px;color:var(--accent);margin-bottom:10px}
+  .maker .desc{font-size:12px;color:var(--txt-faint);line-height:1.65;margin-bottom:14px;min-height:56px}
+  .maker .m-stats{display:flex;justify-content:center;gap:16px;font-size:11px;color:var(--txt-dim);border-top:1px solid var(--line-soft);padding-top:12px}
+  .maker .m-stats b{color:var(--txt);font-weight:700}
+  .follow-btn{width:100%;margin-top:12px;font-size:12.5px;padding:8px 0;border-radius:8px;border:1px solid var(--line);color:var(--txt-dim);transition:.2s;font-weight:600}
+  .follow-btn:hover{border-color:rgba(62,230,195,.5);color:var(--accent);background:rgba(62,230,195,.06)}
+  .follow-btn.on{background:rgba(62,230,195,.12);border-color:rgba(62,230,195,.45);color:var(--accent)}
+
+  /* 特色说明 */
+  .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .feat-item{background:linear-gradient(165deg,var(--panel),var(--bg-soft));border:1px solid var(--line-soft);border-radius:var(--radius);padding:28px 24px;transition:.22s;position:relative;overflow:hidden}
+  .feat-item::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));opacity:.6}
+  .feat-item:hover{transform:translateY(-4px);border-color:rgba(62,230,195,.28)}
+  .feat-item .fi-ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;background:rgba(62,230,195,.1);color:var(--accent);border:1px solid rgba(62,230,195,.2)}
+  .feat-item:nth-child(2) .fi-ic{background:rgba(91,140,255,.1);color:var(--accent-2);border-color:rgba(91,140,255,.22)}
+  .feat-item:nth-child(3) .fi-ic{background:rgba(255,179,71,.1);color:var(--accent-warm);border-color:rgba(255,179,71,.22)}
+  .feat-item .fi-ic svg{width:23px;height:23px}
+  .feat-item h3{font-size:17px;font-weight:700;margin-bottom:10px}
+  .feat-item p{font-size:13.5px;color:var(--txt-dim);line-height:1.75}
+
+  /* 数据横条 */
+  .metrics{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:rgba(17,21,31,.6)}
+  .metric-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:44px 0}
+  .metric{text-align:center}
+  .metric b{display:block;font-size:clamp(28px,3.6vw,40px);font-weight:850;letter-spacing:-1px;background:linear-gradient(120deg,#fff,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .metric span{font-size:12.5px;color:var(--txt-faint);letter-spacing:1px;margin-top:6px;display:block}
+
+  /* 活动/社区 */
+  .community{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:start}
+  .topic-list{display:flex;flex-direction:column;gap:12px}
+  .topic{display:flex;align-items:center;gap:16px;background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;padding:16px 18px;transition:.2s}
+  .topic:hover{border-color:rgba(62,230,195,.3);transform:translateX(5px)}
+  .topic .rank{font-size:18px;font-weight:800;width:30px;flex-shrink:0;background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+  .topic .t-main{flex:1;min-width:0}
+  .topic .t-main b{display:block;font-size:14px;font-weight:600;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .topic .t-main span{font-size:11.5px;color:var(--txt-faint)}
+  .topic .heat{font-size:11.5px;color:var(--accent);background:rgba(62,230,195,.08);padding:3px 9px;border-radius:6px;white-space:nowrap;flex-shrink:0}
+  .event-card{background:linear-gradient(160deg,var(--panel-2),var(--bg-soft));border:1px solid var(--line);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden}
+  .event-card::before{content:"";position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(91,140,255,.28),transparent 70%)}
+  .event-card .ev-k{font-size:11px;letter-spacing:2.5px;color:var(--accent-warm);font-weight:700;margin-bottom:12px;position:relative}
+  .event-card h3{font-size:22px;font-weight:800;margin-bottom:10px;position:relative}
+  .event-card p{font-size:13px;color:var(--txt-dim);line-height:1.8;margin-bottom:20px;position:relative}
+  .event-card .ev-row{display:flex;justify-content:space-between;font-size:12px;color:var(--txt-faint);padding:9px 0;border-bottom:1px dashed var(--line-soft);position:relative}
+  .event-card .ev-row b{color:var(--txt);font-weight:600}
+  .event-card .btn{width:100%;margin-top:20px;position:relative}
+
+  /* 关于与问答 */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .about-text p{font-size:14.5px;color:var(--txt-dim);line-height:1.9;margin-bottom:16px}
+  .about-text p strong{color:var(--txt);font-weight:650}
+  .about-text .hl{color:var(--accent);font-weight:600}
+  .value-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .value-chips span{font-size:12px;color:var(--txt-dim);border:1px solid var(--line);background:var(--panel);padding:6px 14px;border-radius:999px}
+  .faq{display:flex;flex-direction:column;gap:10px}
+  .faq-item{border:1px solid var(--line-soft);background:var(--panel);border-radius:12px;overflow:hidden}
+  .faq-q{width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 18px;font-size:14px;font-weight:600;color:var(--txt);transition:.2s}
+  .faq-q:hover{color:var(--accent)}
+  .faq-q .ic{width:20px;height:20px;flex-shrink:0;position:relative}
+  .faq-q .ic::before,.faq-q .ic::after{content:"";position:absolute;background:currentColor;border-radius:2px;transition:transform .28s}
+  .faq-q .ic::before{top:9px;left:0;width:20px;height:2px}
+  .faq-q .ic::after{left:9px;top:0;width:2px;height:20px}
+  .faq-item.open .faq-q .ic::after{transform:rotate(90deg);opacity:0}
+  .faq-item.open .faq-q{color:var(--accent)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .faq-a p{padding:0 18px 16px;font-size:13px;color:var(--txt-dim);line-height:1.8}
+
+  /* CTA */
+  .cta{margin:20px 0 0;position:relative}
+  .cta-box{position:relative;overflow:hidden;border-radius:24px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(62,230,195,.14),rgba(91,140,255,.14));padding:56px 44px;text-align:center}
+  .cta-box::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 240px at 50% 0%,rgba(62,230,195,.22),transparent 70%);pointer-events:none}
+  .cta-box h2{font-size:clamp(26px,3.4vw,38px);font-weight:850;letter-spacing:-.8px;margin-bottom:14px;position:relative}
+  .cta-box p{font-size:14.5px;color:var(--txt-dim);max-width:560px;margin:0 auto 28px;position:relative}
+  .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+
+  /* 页脚 */
+  footer{border-top:1px solid var(--line-soft);padding:54px 0 30px;margin-top:20px}
+  .foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px}
+  .foot-brand .logo{margin-bottom:14px}
+  .foot-brand p{font-size:13px;color:var(--txt-faint);line-height:1.8;max-width:280px;margin-bottom:18px}
+  .foot-social{display:flex;gap:10px}
+  .foot-social a{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);display:grid;place-items:center;color:var(--txt-faint);transition:.2s}
+  .foot-social a:hover{color:var(--accent);border-color:rgba(62,230,195,.45);background:rgba(62,230,195,.06)}
+  .foot-social svg{width:15px;height:15px}
+  .foot-col h4{font-size:13px;font-weight:700;margin-bottom:16px;color:var(--txt)}
+  .foot-col a{display:block;font-size:12.5px;color:var(--txt-faint);padding:5px 0;transition:.2s}
+  .foot-col a:hover{color:var(--accent)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line-soft);padding-top:24px;font-size:12px;color:var(--txt-faint)}
+  .foot-bottom .links{display:flex;gap:18px;flex-wrap:wrap}
+  .foot-bottom .links a:hover{color:var(--accent)}
+
+  /* 回到顶部 */
+  .to-top{position:fixed;right:24px;bottom:24px;width:44px;height:44px;border-radius:12px;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center;color:var(--txt-dim);z-index:70;opacity:0;pointer-events:none;transition:.25s;box-shadow:var(--shadow)}
+  .to-top.show{opacity:1;pointer-events:auto}
+  .to-top:hover{color:var(--accent);border-color:rgba(62,230,195,.45)}
+  .to-top svg{width:18px;height:18px}
+
+  /* 响应式 */
+  @media (max-width:1080px){
+    .vid-grid{grid-template-columns:repeat(3,1fr)}
+    .maker-grid{grid-template-columns:repeat(2,1fr)}
+    .cat-grid{grid-template-columns:repeat(2,1fr)}
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .player-card{max-width:560px}
+  }
+  @media (max-width:860px){
+    nav.main,.search-box{display:none}
+    .burger{display:flex}
+    .nav-right .btn-ghost{display:none}
+    .community,.about-grid{grid-template-columns:1fr;gap:30px}
+    .feat{grid-template-columns:1fr}
+    .metric-inner{grid-template-columns:repeat(2,1fr);gap:30px;padding:36px 0}
+    .foot-top{grid-template-columns:1fr 1fr;gap:30px}
+    .foot-brand{grid-column:1/-1}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 18px}
+    section{padding:48px 0}
+    .hero{padding:52px 0 40px}
+    .vid-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+    .maker-grid,.cat-grid{grid-template-columns:1fr}
+    .stats{gap:26px}
+    .stat b{font-size:22px}
+    .cta-box{padding:40px 22px}
+    .nav-right .btn-primary{display:none}
+    .foot-top{grid-template-columns:1fr}
+    .foot-brand{grid-column:auto}
+    .hero-actions .btn{flex:1;justify-content:center}
+    .vid-info{padding:11px}
+    .vid-info h3{font-size:13px}
+    .player-card{aspect-ratio:16/12}
+  }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- ================= 顶栏 ================= -->
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="9l免费官网首页">
+      <span class="logo-mark">9L</span>
+      <span class="brand-9l">9l免费官网</span>
+      <small>OPEN VIDEO</small>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#discover">发现</a>
+      <a href="#channels">频道</a>
+      <a href="#makers">创作者</a>
+      <a href="#community">社区</a>
+      <a href="#about">关于</a>
+    </nav>
+    <div class="nav-right">
+      <label class="search-box" aria-label="搜索视频">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+        <input type="search" placeholder="搜索作品、创作者、话题" aria-label="搜索">
+      </label>
+      <a href="#cta" class="btn btn-ghost">登录</a>
+      <a href="#cta" class="btn btn-primary">免费入驻</a>
+      <button class="burger" aria-label="打开菜单"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= Hero ================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge"><i></i> 开放注册中 · 全程免费 · 无门槛创作</div>
+      <h1>9l免费官网
+        <span class="h1-sub">让每一次表达，都有回声</span>
+      </h1>
+      <p class="lead">9l免费官网是一个开放的视频社区：在这里上传你的作品、发现同好、参与话题，从一条短片开始，把想法连成世界。完全免费，专注创作本身。</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6a1 1 0 0 0 1.53.85l10.6-6.8a1 1 0 0 0 0-1.7L9.53 4.35A1 1 0 0 0 8 5.2Z"/></svg>
+          免费开始创作
+        </a>
+        <a href="#discover" class="btn btn-ghost">浏览今日精选</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>128<em>万+</em></b><span>已发布作品</span></div>
+        <div class="stat"><b>36<em>万</em></b><span>活跃创作者</span></div>
+        <div class="stat"><b>2.4<em>亿</em></b><span>月播放次数</span></div>
+        <div class="stat"><b>24<em>个</em></b><span>内容垂类</span></div>
+      </div>
+    </div>
+
+    <!-- 播放器卡片 -->
+    <div class="player-card" aria-label="推荐视频播放器">
+      <div class="player-screen">
+        <svg class="scene" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#131c33"/><stop offset="1" stop-color="#0a0d15"/>
+            </linearGradient>
+            <linearGradient id="mount" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#24406b"/><stop offset="1" stop-color="#12203a"/>
+            </linearGradient>
+            <linearGradient id="mount2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#1a2f52"/><stop offset="1" stop-color="#0d1728"/>
+            </linearGradient>
+            <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+              <stop offset="0" stop-color="#3ee6c3"/><stop offset="1" stop-color="#3ee6c3" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="600" height="380" fill="url(#sky)"/>
+          <circle cx="430" cy="120" r="110" fill="url(#sun)" opacity=".55"/>
+          <circle cx="430" cy="120" r="34" fill="#3ee6c3" opacity=".9"/>
+          <path d="M0 250 L90 150 L170 220 L250 130 L360 240 L450 170 L540 230 L600 190 L600 380 L0 380 Z" fill="url(#mount)" opacity=".9"/>
+          <path d="M0 300 L70 245 L160 295 L260 225 L350 300 L460 250 L560 305 L600 285 L600 380 L0 380 Z" fill="url(#mount2)"/>
+          <g opacity=".55" stroke="#5b8cff" stroke-width="1.4" fill="none">
+            <path d="M40 330 Q160 300 300 330 T580 320"/>
+            <path d="M20 350 Q180 320 340 350 T590 340"/>
+          </g>
+          <g fill="#e8edf5" opacity=".55">
+            <circle cx="80" cy="60" r="1.6"/><circle cx="150" cy="40" r="1.2"/><circle cx="240" cy="75" r="1.8"/>
+            <circle cx="330" cy="35" r="1.3"/><circle cx="520" cy="55" r="1.6"/><circle cx="560" cy="95" r="1.1"/>
+          </g>
+        </svg>
+        <div class="player-tag"><i></i> 正在放映</div>
+        <button class="play-fab" aria-label="播放预告片">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6a1 1 0 0 0 1.53.85l10.6-6.8a1 1 0 0 0 0-1.7L9.53 4.35A1 1 0 0 0 8 5.2Z"/></svg>
+        </button>
+        <div class="player-bar">
+          <div class="timeline"></div>
+          <div class="player-meta">
+            <strong>《山海之间》· 纪录短片</strong>
+            <span>03:42 / 08:15</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-foot">
+        <span class="avatar">山</span>
+        <div class="meta">
+          <b>山海影像社</b>
+          <span>官方精选 · 纪录频道</span>
+        </div>
+        <button class="icon-btn" aria-label="收藏" data-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.6 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8Z"/></svg></button>
+        <button class="icon-btn" aria-label="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="m8.3 10.7 7.4-4.3M8.3 13.3l7.4 4.3"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 发现 · 精选视频 ================= -->
+<section id="discover">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">DISCOVER</div>
+        <h2>今日精选<small>编辑与社区共同挑选，每一条都值得看完</small></h2>
+      </div>
+      <a class="more" href="#channels">查看全部
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="cat-strip" role="tablist" aria-label="内容分类">
+      <button class="cat-chip active" role="tab" aria-selected="true">全部</button>
+      <button class="cat-chip" role="tab" aria-selected="false">纪录</button>
+      <button class="cat-chip" role="tab" aria-selected="false">生活</button>
+      <button class="cat-chip" role="tab" aria-selected="false">知识</button>
+      <button class="cat-chip" role="tab" aria-selected="false">影视</button>
+      <button class="cat-chip" role="tab" aria-selected="false">音乐</button>
+      <button class="cat-chip" role="tab" aria-selected="false">动画</button>
+      <button class="cat-chip" role="tab" aria-selected="false">旅行</button>
+    </div>
+
+    <div class="vid-grid">
+      <!-- 卡片 1 -->
+      <article class="vid-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 225" aria-hidden="true">
+            <defs><linearGradient id="t1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c3150"/><stop offset="1" stop-color="#0c1522"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#t1)"/>
+            <circle cx="320" cy="55" r="30" fill="#ffb347" opacity=".7"/>
+            <path d="M0 165 L80 105 L150 150 L230 80 L320 160 L400 120 L400 225 L0 225 Z" fill="#16263f"/>
+            <path d="M0 195 L90 150 L180 190 L270 140 L360 195 L400 175 L400 225 L0 225 Z" fill="#0e1a2b"/>
+            <g fill="#e8edf5" opacity=".6"><circle cx="60" cy="45" r="1.4"/><circle cx="140" cy="28" r="1"/><circle cx="210" cy="50" r="1.6"/></g>
+          </svg>
+          <span class="tagx">纪录</span>
+          <span class="dur">08:15</span>
+        </div>
+        <div class="vid-info">
+          <h3>山海之间：一座小城与它的四季</h3>
+          <div class="vmeta"><span class="au">山海影像社</span><i></i><span>32.6万</span><i></i><span>3天前</span></div>
+        </div>
+      </article>
+
+      <!-- 卡片 2 -->
+      <article class="vid-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 225" aria-hidden="true">
+            <defs><linearGradient id="t2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#28203f"/><stop offset="1" stop-color="#101020"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#t2)"/>
+            <circle cx="90" cy="120" r="60" fill="#5b8cff" opacity=".25"/>
+            <circle cx="300" cy="90" r="45" fill="#3ee6c3" opacity=".2"/>
+            <rect x="150" y="70" width="100" height="90" rx="10" fill="none" stroke="#5b8cff" stroke-width="2" opacity=".7"/>
+            <path d="M180 110 l18 18 l30 -34" fill="none" stroke="#3ee6c3" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="tagx">知识</span>
+          <span class="dur">12:04</span>
+        </div>
+        <div class="vid-info">
+          <h3>用一块屏幕理解世界：信息设计的九个原则</h3>
+          <div class="vmeta"><span class="au">拆解实验室</span><i></i><span>18.9万</span><i></i><span>1天前</span></div>
+        </div>
+      </article>
+
+      <!-- 卡片 3 -->
+      <article class="vid-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 225" aria-hidden="true">
+            <defs><linearGradient id="t3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a2420"/><stop offset="1" stop-color="#150f12"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#t3)"/>
+            <circle cx="200" cy="120" r="72" fill="none" stroke="#ffb347" stroke-width="2" opacity=".5"/>
+            <circle cx="200" cy="120" r="48" fill="none" stroke="#ffb347" stroke-width="2" opacity=".7"/>
+            <circle cx="200" cy="120" r="20" fill="#ffb347" opacity=".85"/>
+            <path d="M0 190 Q100 160 200 190 T400 185" fill="none" stroke="#ff5f6d" stroke-width="1.4" opacity=".5"/>
+          </svg>
+          <span class="tagx">音乐</span>
+          <span class="dur">04:28</span>
+        </div>
+        <div class="vid-info">
+          <h3>城市夜行人｜原创氛围音乐现场 vol.12</h3>
+          <div class="vmeta"><span class="au">夜行电台</span><i></i><span>9.4万</span><i></i><span>5小时前</span></div>
+        </div>
+      </article>
+
+      <!-- 卡片 4 -->
+      <article class="vid-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 225" aria-hidden="true">
+            <defs><linearGradient id="t4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16302c"/><stop offset="1" stop-color="#0a1412"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#t4)"/>
+            <g stroke="#3ee6c3" stroke-width="1.6" fill="none" opacity=".7">
+              <path d="M60 160 Q130 100 200 150 T340 120"/>
+              <path d="M40 185 Q120 130 210 175 T360 150"/>
+            </g>
+            <circle cx="200" cy="150" r="6" fill="#3ee6c3"/>
+            <circle cx="340" cy="120" r="4" fill="#5b8cff"/>
+          </svg>
+          <span class="tagx">旅行</span>
+          <span class="dur">06:50</span>
+        </div>
+        <div class="vid-info">
+          <h3>沿着河走一百公里：慢旅行手记</h3>
+          <div class="vmeta"><span class="au">背包与风</span><i></i><span>11.2万</span><i></i><span>2天前</span></div>
+        </div>
+      </article>
+
+      <!-- 卡片 5 -->
+      <article class="vid-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 225" aria-hidden="true">
+            <defs><linearGradient id="t5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#241b3d"/><stop offset="1" stop-color="#0e0b18"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#t5)"/>
+            <g fill="#9b6bff" opacity=".8">
+              <circle cx="130" cy="90" r="26"/><circle cx="200" cy="130" r="34"/><circle cx="280" cy="85" r="18"/>
+            </g>
+            <g fill="#3ee6c3" opacity=".7">
+              <rect x="90" y="160" width="10" height="30" rx="2"/><rect x="110" y="145" width="10" height="45" rx="2"/>
+              <rect x="130" y="168" width="10" height="22" rx="2"/><rect x="150" y="150" width="10" height="40" rx="2"/>
+            </g>
+          </svg>
+          <span class="tagx">动画</span>
+          <span class="dur">05:12</span>
+        </div>
+        <div class="vid-info">
+          <h3>像素之外：一镜到底的二维动画实验</h3>
+          <div class="vmeta"><span class="au">逐帧工作室</span><i></i><span>7.8万</span><i></i><span>1天前</span></div>
+        </div>
+      </article>
+
+      <!-- 卡片 6 -->
+      <article class="vid-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 225" aria-hidden="true">
+            <defs><linearGradient id="t6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2a1c"/><stop offset="1" stop-color="#101008"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#t6)"/>
+            <circle cx="200" cy="112" r="58" fill="#ffe7a3" opacity=".9"/>
+            <circle cx="200" cy="112" r="58" fill="none" stroke="#ffb347" stroke-width="1.5" opacity=".6"/>
+            <path d="M60 200 Q200 170 340 200" fill="none" stroke="#ffb347" stroke-width="2" opacity=".4"/>
+            <g fill="#ffb347" opacity=".8"><circle cx="120" cy="70" r="3"/><circle cx="280" cy="60" r="2"/><circle cx="300" cy="150" r="2.5"/></g>
+          </svg>
+          <span class="tagx">生活</span>
+          <span class="dur">09:30</span>
+        </div>
+        <div class="vid-info">
+          <h3>认真吃一顿早餐，是把日子过好的开始</h3>
+          <div class="vmeta"><span class="au">慢食日记</span><i></i><span>24.1万</span><i></i><span>4天前</span></div>
+        </div>
+      </article>
+
+      <!-- 卡片 7 -->
+      <article class="vid-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 225" aria-hidden="true">
+            <defs><linearGradient id="t7" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b2b3d"/><stop offset="1" stop-color="#0a1119"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#t7)"/>
+            <rect x="60" y="50" width="280" height="120" rx="8" fill="none" stroke="#5b8cff" stroke-width="2" opacity=".7"/>
+            <path d="M60 50 L340 170 M340 50 L60 170" stroke="#5b8cff" stroke-width="1" opacity=".3"/>
+            <circle cx="200" cy="110" r="26" fill="none" stroke="#3ee6c3" stroke-width="2"/>
+            <path d="M190 110 l10 10 l16 -20" stroke="#3ee6c3" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="tagx">影视</span>
+          <span class="dur">15:08</span>
+        </div>
+        <div class="vid-info">
+          <h3>一个镜头怎样讲完一个故事｜运镜入门课</h3>
+          <div class="vmeta"><span class="au">影像研习室</span><i></i><span>15.6万</span><i></i><span>1周前</span></div>
+        </div>
+      </article>
+
+      <!-- 卡片 8 -->
+      <article class="vid-card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 225" aria-hidden="true">
+            <defs><linearGradient id="t8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3d1f2e"/><stop offset="1" stop-color="#140a11"/></linearGradient></defs>
+            <rect width="400" height="225" fill="url(#t8)"/>
+            <path d="M0 150 Q80 110 160 150 T320 140 T400 160 L400 225 L0 225 Z" fill="#5d2742" opacity=".7"/>
+            <path d="M0 180 Q100 150 200 180 T400 175 L400 225 L0 225 Z" fill="#3a1728" opacity=".85"/>
+            <circle cx="310" cy="70" r="26" fill="#ff5f6d" opacity=".55"/>
+            <g fill="#ffd6e0" opacity=".55"><circle cx="80" cy="60" r="1.5"/><circle cx="200" cy="40" r="1.2"/><circle cx="360" cy="45" r="1.6"/></g>
+          </svg>
+          <span class="tagx">生活</span>
+          <span class="dur">03:20</span>
+        </div>
+        <div class="vid-info">
+          <h3>把阳台改造成小花园｜一起动手的周末</h3>
+          <div class="vmeta"><span class="au">阳台计划</span><i></i><span>6.3万</span><i></i><span>2天前</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 频道集合 ================= -->
+<section id="channels" style="background:rgba(17,21,31,.5);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">CHANNELS</div>
+        <h2>找到属于你的频道<small>从纪录到动画，二十四个垂类持续更新</small></h2>
+      </div>
+      <a class="more" href="#makers">全部频道
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="cat-grid">
+      <a class="cat-card" href="#discover">
+        <div class="c-bg">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="c1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d3358"/><stop offset="1" stop-color="#0a1220"/></linearGradient></defs>
+            <rect width="400" height="200" fill="url(#c1)"/>
+            <path d="M0 140 L70 90 L140 130 L210 70 L300 140 L400 100 L400 200 L0 200 Z" fill="#12233c"/>
+            <circle cx="320" cy="50" r="22" fill="#3ee6c3" opacity=".55"/>
+          </svg>
+        </div>
+        <div class="c-k">DOCUMENTARY</div>
+        <h3>纪录频道</h3>
+        <p>山水、城市、人与时间，把真实拍成诗。</p>
+        <div class="c-n">2,846 部作品持续更新</div>
+      </a>
+      <a class="cat-card" href="#discover">
+        <div class="c-bg">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="c2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c2140"/><stop offset="1" stop-color="#0e0a18"/></linearGradient></defs>
+            <rect width="400" height="200" fill="url(#c2)"/>
+            <circle cx="110" cy="90" r="46" fill="#5b8cff" opacity=".38"/>
+            <circle cx="260" cy="120" r="60" fill="#9b6bff" opacity=".26"/>
+            <rect x="170" y="60" width="60" height="60" rx="8" fill="none" stroke="#5b8cff" stroke-width="2" opacity=".6"/>
+          </svg>
+        </div>
+        <div class="c-k">KNOWLEDGE</div>
+        <h3>知识频道</h3>
+        <p>把复杂的道理，拆成看得懂的画面。</p>
+        <div class="c-n">1,932 部作品持续更新</div>
+      </a>
+      <a class="cat-card" href="#discover">
+        <div class="c-bg">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="c3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a2a1a"/><stop offset="1" stop-color="#140e08"/></linearGradient></defs>
+            <rect width="400" height="200" fill="url(#c3)"/>
+            <circle cx="200" cy="100" r="52" fill="none" stroke="#ffb347" stroke-width="2" opacity=".65"/>
+            <circle cx="200" cy="100" r="16" fill="#ffb347" opacity=".8"/>
+            <path d="M0 170 Q100 140 200 170 T400 165" fill="none" stroke="#ff5f6d" stroke-width="1.6" opacity=".4"/>
+          </svg>
+        </div>
+        <div class="c-k">MUSIC</div>
+        <h3>音乐频道</h3>
+        <p>现场、翻唱、原创，把耳朵交给旋律。</p>
+        <div class="c-n">3,510 部作品持续更新</div>
+      </a>
+      <a class="cat-card" href="#discover">
+        <div class="c-bg">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="c4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#15332c"/><stop offset="1" stop-color="#08120f"/></linearGradient></defs>
+            <rect width="400" height="200" fill="url(#c4)"/>
+            <g stroke="#3ee6c3" fill="none" stroke-width="1.6" opacity=".6">
+              <path d="M30 140 Q110 70 190 130 T380 100"/>
+              <path d="M20 165 Q100 100 200 155 T390 130"/>
+            </g>
+            <circle cx="190" cy="130" r="5" fill="#3ee6c3"/>
+          </svg>
+        </div>
+        <div class="c-k">TRAVEL</div>
+        <h3>旅行频道</h3>
+        <p>不赶路，去感受路，慢一点也能到远方。</p>
+        <div class="c-n">1,507 部作品持续更新</div>
+      </a>
+      <a class="cat-card" href="#discover">
+        <div class="c-bg">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="c5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#241a38"/><stop offset="1" stop-color="#0b0814"/></linearGradient></defs>
+            <rect width="400" height="200" fill="url(#c5)"/>
+            <g fill="#9b6bff" opacity=".7"><circle cx="120" cy="80" r="24"/><circle cx="200" cy="120" r="32"/><circle cx="290" cy="70" r="16"/></g>
+            <g fill="#3ee6c3" opacity=".65"><rect x="80" y="140" width="9" height="30" rx="2"/><rect x="100" y="125" width="9" height="45" rx="2"/><rect x="120" y="150" width="9" height="20" rx="2"/></g>
+          </svg>
+        </div>
+        <div class="c-k">ANIMATION</div>
+        <h3>动画频道</h3>
+        <p>二维、三维、逐帧，把想象变成会动的画。</p>
+        <div class="c-n">986 部作品持续更新</div>
+      </a>
+      <a class="cat-card" href="#discover">
+        <div class="c-bg">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="c6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f2a18"/><stop offset="1" stop-color="#100e06"/></linearGradient></defs>
+            <rect width="400" height="200" fill="url(#c6)"/>
+            <circle cx="200" cy="100" r="48" fill="#ffe7a3" opacity=".85"/>
+            <path d="M40 180 Q200 150 360 180" fill="none" stroke="#ffb347" stroke-width="2" opacity=".4"/>
+          </svg>
+        </div>
+        <div class="c-k">LIFE</div>
+        <h3>生活频道</h3>
+        <p>三餐、四季、日常小事里的大满足。</p>
+        <div class="c-n">4,153 部作品持续更新</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 数据 ================= -->
+<div class="metrics">
+  <div class="wrap metric-inner">
+    <div class="metric"><b>128万+</b><span>累计作品</span></div>
+    <div class="metric"><b>36万</b><span>活跃创作者</span></div>
+    <div class="metric"><b>2.4亿</b><span>月播放</span></div>
+    <div class="metric"><b>98.6%</b><span>免费内容占比</span></div>
+  </div>
+</div>
+
+<!-- ================= 创作者 ================= -->
+<section id="makers">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">CREATORS</div>
+        <h2>值得关注的创作者<small>他们用镜头记录世界，也记录自己</small></h2>
+      </div>
+      <a class="more" href="#community">进入创作者广场
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="maker-grid">
+      <article class="maker">
+        <div class="m-av" style="background:linear-gradient(135deg,#3ee6c3,#39a9e8)">山</div>
+        <h3>山海影像社</h3>
+        <div class="role">纪录 · 摄影</div>
+        <p class="desc">走遍山野与海岸，用纪录片的方式记录正在消失的风景。</p>
+        <div class="m-stats"><span><b>86.2万</b> 关注</span><span><b>142</b> 作品</span></div>
+        <button class="follow-btn" data-follow>＋ 关注</button>
+      </article>
+      <article class="maker">
+        <div class="m-av" style="background:linear-gradient(135deg,#5b8cff,#9b6bff)">拆</div>
+        <h3>拆解实验室</h3>
+        <div class="role">知识 · 科普</div>
+        <p class="desc">把复杂的概念拆开给你看，一期一个知识盲区。</p>
+        <div class="m-stats"><span><b>52.8万</b> 关注</span><span><b>89</b> 作品</span></div>
+        <button class="follow-btn" data-follow>＋ 关注</button>
+      </article>
+      <article class="maker">
+        <div class="m-av" style="background:linear-gradient(135deg,#ffb347,#ff5f6d)">夜</div>
+        <h3>夜行电台</h3>
+        <div class="role">音乐 · 现场</div>
+        <p class="desc">深夜的音符收集者，每月一场不插电的线上现场。</p>
+        <div class="m-stats"><span><b>34.5万</b> 关注</span><span><b>67</b> 作品</span></div>
+        <button class="follow-btn" data-follow>＋ 关注</button>
+      </article>
+      <article class="maker">
+        <div class="m-av" style="background:linear-gradient(135deg,#3ee6c3,#9b6bff)">逐</div>
+        <h3>逐帧工作室</h3>
+        <div class="role">动画 · 实验</div>
+        <p class="desc">一群热爱手绘与像素的动画师，相信慢工出细活。</p>
+        <div class="m-stats"><span><b>27.4万</b> 关注</span><span><b>54</b> 作品</span></div>
+        <button class="follow-btn" data-follow>＋ 关注</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 平台特色 ================= -->
+<section style="background:rgba(17,21,31,.5);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">WHY 9L</div>
+        <h2>为什么选择 9l免费官网<small>把工具做好，把规则讲清，把创作还给创作者</small></h2>
+      </div>
+    </div>
+    <div class="feat">
+      <div class="feat-item">
+        <div class="fi-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg>
+        </div>
+        <h3>全程免费，专注创作</h3>
+        <p>上传、转码、存储、分发全部免费，不设隐藏收费。平台以社区共建的方式运营，让创作者把精力放回内容本身，而不是预算表。</p>
+      </div>
+      <div class="feat-item">
+        <div class="fi-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="m10 9 5 2-5 2Z"/></svg>
+        </div>
+        <h3>轻量剪辑，网页即用</h3>
+        <p>内置在线剪辑台，支持多轨道拼接、字幕、配乐与转场。无需安装任何软件，打开浏览器就能完成从粗剪到成片的全流程。</p>
+      </div>
+      <div class="feat-item">
+        <div class="fi-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10Z"/><circle cx="12" cy="11" r="2.6"/></svg>
+        </div>
+        <h3>社区共治，公平分发</h3>
+        <p>推荐逻辑公开透明，新人也有曝光机会。内容审核依据统一标准，创作者的权益与反馈通道始终敞开着。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 社区 ================= -->
+<section id="community">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">COMMUNITY</div>
+        <h2>社区正在发生<small>话题、活动、共创，热度每天都在变化</small></h2>
+      </div>
+    </div>
+    <div class="community">
+      <div class="topic-list">
+        <div class="topic"><span class="rank">01</span><div class="t-main"><b># 我在小城拍纪录片</b><span>3,842 条讨论 · 纪录频道</span></div><span class="heat">热度 98</span></div>
+        <div class="topic"><span class="rank">02</span><div class="t-main"><b># 一分钟讲懂一个知识点</b><span>2,915 条讨论 · 知识频道</span></div><span class="heat">热度 94</span></div>
+        <div class="topic"><span class="rank">03</span><div class="t-main"><b># 阳台上的四季</b><span>2,470 条讨论 · 生活频道</span></div><span class="heat">热度 91</span></div>
+        <div class="topic"><span class="rank">04</span><div class="t-main"><b># 原创氛围音乐征集</b><span>1,836 条讨论 · 音乐频道</span></div><span class="heat">热度 87</span></div>
+        <div class="topic"><span class="rank">05</span><div class="t-main"><b># 逐帧动画挑战赛</b><span>1,204 条讨论 · 动画频道</span></div><span class="heat">热度 82</span></div>
+        <div class="topic"><span class="rank">06</span><div class="t-main"><b># 一人一城旅行手记</b><span>968 条讨论 · 旅行频道</span></div><span class="heat">热度 79</span></div>
+      </div>
+      <aside class="event-card">
+        <div class="ev-k">FEATURED EVENT</div>
+        <h3>四季纪实影像征集</h3>
+        <p>用一段三到八分钟的影像，记录你所在城市的某个季节。入选项将在首页展映，并获得创作扶持与官方推荐位。</p>
+        <div class="ev-row"><span>征集时间</span><b>6 月 1 日 - 8 月 31 日</b></div>
+        <div class="ev-row"><span>作品时长</span><b>3 - 8 分钟</b></div>
+        <div class="ev-row"><span>参与方式</span><b>免费报名 · 在线上传</b></div>
+        <a href="#cta" class="btn btn-blue">我要参加</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 关于 & FAQ ================= -->
+<section id="about" style="background:rgba(17,21,31,.5);border-top:1px solid var(--line-soft)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">ABOUT &amp; FAQ</div>
+        <h2>关于 9l免费官网<small>一个认真做视频社区的地方</small></h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><strong>9l免费官网</strong> 是一个面向所有创作者与观众的开放视频社区。我们相信，好的表达不应该被门槛拦住：无论你只有一部手机，还是一整间工作室，都可以在这里找到属于自己的观众。</p>
+        <p>平台提供完整的创作链路——从在线上传、自动转码、多清晰度播放，到轻量剪辑与封面编辑，全部<span class="hl">免费开放</span>。我们希望把技术复杂度留给自己，把创作的自由留给你。</p>
+        <p>社区是我们最珍视的部分。话题广场、共创计划、线下放映会与创作者扶持，让每一部作品都有被看见的机会。内容审核遵循公开透明的标准，推荐机制持续公开说明，用户反馈始终被认真对待。</p>
+        <p>如果你刚来到 9l免费官网，欢迎从「今日精选」开始逛一逛；如果你已经准备好创作，那就直接点下「免费开始创作」——剩下的交给镜头。</p>
+        <div class="value-chips">
+          <span>开放注册</span><span>免费创作</span><span>公开推荐</span><span>社区共治</span><span>创作者友好</span><span>长期主义</span>
+        </div>
+      </div>
+      <div class="faq">
+        <div class="faq-item open">
+          <button class="faq-q">使用 9l免费官网 需要付费吗？<span class="ic"></span></button>
+          <div class="faq-a"><p>不需要。注册、上传、观看、在线剪辑等核心功能完全免费。平台不以会员门槛限制内容访问，也不对上传作品收取费用。</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">我只有手机，可以上传作品吗？<span class="ic"></span></button>
+          <div class="faq-a"><p>可以。手机浏览器即可完成拍摄后上传、封面上传与基础剪辑。支持常见视频格式，系统会自动完成转码与多清晰度适配。</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">作品会被推荐到首页吗？<span class="ic"></span></button>
+          <div class="faq-a"><p>首页推荐由编辑精选与社区数据共同决定，新人作品同样有机会。持续更新、信息完整、画质清晰的作品更容易获得曝光。</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">我的作品版权归属如何认定？<span class="ic"></span></button>
+          <div class="faq-a"><p>作品版权始终归创作者所有。上传即表示授权平台在站内展示与分发，创作者可随时下架作品并保留署名权，具体条款请参见平台版权说明。</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">遇到内容问题如何反馈？<span class="ic"></span></button>
+          <div class="faq-a"><p>每条作品页均提供举报与反馈入口，也可以在社区广场联系值班管理员。我们会在收到反馈后按公开标准处理并回复结果。</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">怎样参与社区活动和共创？<span class="ic"></span></button>
+          <div class="faq-a"><p>关注社区板块的活动公告，按说明投稿即可。常规活动包括主题征集、共创短片与线下放映，报名与提交均在站内免费完成。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta" id="cta">
+  <div class="wrap">
+    <div class="cta-box">
+      <h2>准备好用镜头说点什么了吗？</h2>
+      <p>注册 9l免费官网，加入三十六万创作者的社区。第一条作品，往往就是旅程的开始。</p>
+      <div class="cta-actions">
+        <a href="#top" class="btn btn-primary">免费开始创作</a>
+        <a href="#discover" class="btn btn-ghost">先逛逛社区</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 页脚 ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="#top">
+          <span class="logo-mark">9L</span>
+          <span class="brand-9l">9l免费官网</span>
+        </a>
+        <p>开放的视频社区，让每一次表达都有回声。免费创作、自由分享、长期陪伴。</p>
+        <div class="foot-social">
+          <a href="#top" aria-label="微博"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 8.5c-3 0-5.5 2-5.5 4.5s2.5 4.5 5.5 4.5 5.5-2 5.5-4.5-2.5-4.5-5.5-4.5Zm0 7.2c-1.8 0-3.2-.9-3.2-2s1.4-2 3.2-2 3.2.9 3.2 2-1.4 2-3.2 2Zm7.2-8.9c-.6-.2-1.2.1-1.4.7-.2.6.1 1.2.7 1.4.9.3 1.5 1.1 1.5 2.1 0 .6.5 1.1 1.1 1.1s1.1-.5 1.1-1.1c0-1.9-1.2-3.5-3-4.2Z"/></svg></a>
+          <a href="#top" aria-label="微信"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 4.5C5.4 4.5 2.5 6.9 2.5 9.9c0 1.7 1 3.2 2.5 4.2l-.6 1.9 2.2-1.1c.7.2 1.5.3 2.4.3h.5c-.2-.5-.3-1-.3-1.6 0-2.9 2.8-5.2 6.2-5.2h.4C15.2 6.1 12.4 4.5 9 4.5Zm-2.3 3c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9Zm4.6 0c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9Zm4.7 2.2c-3 0-5.5 2-5.5 4.5s2.5 4.5 5.5 4.5c.7 0 1.4-.1 2-.3l1.8.9-.5-1.6c1.3-.8 2.2-2.1 2.2-3.5 0-2.5-2.5-4.5-5.5-4.5Zm-1.9 2.6c.4 0 .8.3.8.8 0 .4-.3.8-.8.8-.4 0-.8-.3-.8-.8 0-.5.4-.8.8-.8Zm3.8 0c.4 0 .8.3.8.8 0 .4-.3.8-.8.8-.4 0-.8-.3-.8-.8 0-.5.4-.8.8-.8Z"/></svg></a>
+          <a href="#top" aria-label="B站"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.2 5.6 4.5 3.9l1.4-1.4 3 3h6.2l3-3 1.4 1.4-1.7 1.7h1.7A2.5 2.5 0 0 1 22 8.1v8.4a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 16.5V8.1a2.5 2.5 0 0 1 2.5-2.5h1.7Zm-.7 2H4.5a.5.5 0 0 0-.5.5v8.4c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5V8.1a.5.5 0 0 0-.5-.5h-15Zm3.3 2.3c.9 0 1.6.4 2 1 .4-.6 1.1-1 2-1 1.4 0 2.4.9 2.4 2.2v.7c0 1.6-1.3 2.8-3 2.8h-2.8c-1.7 0-3-1.2-3-2.8v-.7c0-1.3 1-2.2 2.4-2.2Zm.4 1.6c-.5 0-.9.3-.9.8s.4.8.9.8.9-.3.9-.8-.4-.8-.9-.8Zm3.2 0c-.5 0-.9.3-.9.8s.4.8.9.8.9-.3.9-.8-.4-.8-.9-.8Z"/></svg></a>
+          <a href="#top" aria-label="邮件"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>平台</h4>
+        <a href="#discover">发现频道</a>
+        <a href="#channels">内容分类</a>
+        <a href="#makers">创作者广场</a>
+        <a href="#community">社区话题</a>
+        <a href="#cta">免费入驻</a>
+      </div>
+      <div class="foot-col">
+        <h4>创作</h4>
+        <a href="#cta">上传作品</a>
+        <a href="#about">在线剪辑</a>
+        <a href="#about">封面与字幕</a>
+        <a href="#community">活动征集</a>
+        <a href="#about">创作者扶持</a>
+      </div>
+      <div class="foot-col">
+        <h4>支持</h4>
+        <a href="#about">常见问题</a>
+        <a href="#about">版权说明</a>
+        <a href="#about">内容规范</a>
+        <a href="#about">反馈与举报</a>
+        <a href="#about">联系我们</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 9l免费官网 · 开放视频社区 · 保留所有权利</span>
+      <div class="links">
+        <a href="#about">隐私政策</a>
+        <a href="#about">服务条款</a>
+        <a href="#about">内容公约</a>
+        <a href="#top">返回顶部</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script>
+(function(){
+  /* 分类切换 */
+  var chips = document.querySelectorAll('.cat-chip');
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.classList.remove('active'); c.setAttribute('aria-selected','false'); });
+      chip.classList.add('active');
+      chip.setAttribute('aria-selected','true');
+    });
+  });
+
+  /* 关注按钮 */
+  document.querySelectorAll('[data-follow]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btn.classList.toggle('on');
+      btn.textContent = btn.classList.contains('on') ? '✓ 已关注' : '＋ 关注';
+    });
+  });
+
+  /* 收藏按钮 */
+  document.querySelectorAll('[data-toggle]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btn.classList.toggle('on');
+    });
+  });
+
+  /* FAQ 手风琴 */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    function sync(){
+      if(item.classList.contains('open')){
+        a.style.maxHeight = a.scrollHeight + 'px';
+      } else {
+        a.style.maxHeight = '0px';
+      }
+    }
+    q.addEventListener('click', function(){
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(other){
+        other.classList.remove('open');
+        other.querySelector('.faq-a').style.maxHeight = '0px';
+      });
+      if(!wasOpen){
+        item.classList.add('open');
+        sync();
+      }
+    });
+    sync();
+  });
+  window.addEventListener('resize', function(){
+    document.querySelectorAll('.faq-item.open .faq-a').forEach(function(a){
+      a.style.maxHeight = a.scrollHeight + 'px';
+    });
+  });
+
+  /* 回到顶部 */
+  var toTop = document.querySelector('.to-top');
+  function onScroll(){
+    if(window.scrollY > 520){ toTop.classList.add('show'); }
+    else { toTop.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* 导航平滑滚动偏移补偿 */
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var id = link.getAttribute('href');
+      if(id.length > 1){
+        var target = document.querySelector(id);
+        if(target){
+          e.preventDefault();
+          var top = target.getBoundingClientRect().top + window.scrollY - 76;
+          window.scrollTo({top: top, behavior:'smooth'});
+        }
+      }
+    });
+  });
+
+  /* 搜索框回车提示 */
+  var searchInput = document.querySelector('.search-box input');
+  if(searchInput){
+    searchInput.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        e.preventDefault();
+        var v = searchInput.value.trim();
+        if(v){
+          var disc = document.getElementById('discover');
+          if(disc){
+            var top = disc.getBoundingClientRect().top + window.scrollY - 76;
+            window.scrollTo({top: top, behavior:'smooth'});
+          }
+        }
+      }
+    });
+  }
+
+  /* 卡片入场动画 */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.style.opacity = '1';
+          en.target.style.transform = 'translateY(0)';
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold: .12});
+    document.querySelectorAll('.vid-card, .maker, .cat-card, .feat-item, .topic').forEach(function(el){
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity .55s ease, transform .55s ease, border-color .22s, box-shadow .22s';
+      io.observe(el);
+    });
+  }
+})();
+</script>
+</body>
+  </html>
